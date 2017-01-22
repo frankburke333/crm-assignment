@@ -118,14 +118,13 @@ class CRM
   def display_all_contacts
     all_contact = Contact.all
     all_contact.each do |list|
-      puts
       puts:"-----------------------------"
       puts "first name: #{list.first_name}"
       puts "last name: #{list.last_name}"
       puts "email: #{list.email}"
       puts "note: #{list.note}"
       puts "id: #{list.id}"
-      puts "------------------------------"
+      puts:"-----------------------------"
 
     end
   end
@@ -167,3 +166,5 @@ class CRM
 
 
 end
+
+  new_crm = CRM.new

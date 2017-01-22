@@ -89,7 +89,7 @@ class Contact
     end
   end
 
-  # .clear method clears out all items from the array
+  # This method should delete all of the contacts
   def self.delete_all
     @@contacts.clear
 
@@ -100,7 +100,8 @@ class Contact
   end
 
   # This method should delete the contact
-  # this delete method deletes itself from the @@contact array
+  # HINT: Check the Array class docs for built-in methods that might be useful here
+  def delete
     @@contacts.delete(self)
   end
 
