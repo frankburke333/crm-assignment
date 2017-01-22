@@ -7,8 +7,6 @@ class Contact
   @@next_id = 333
 
 
-
-
   def first_name
     @first_name
   end
@@ -59,6 +57,8 @@ class Contact
   # and then make the appropriate change to the contact
 
   #$frank.update(:first_name, "John")
+
+
   def update(attribute, new_value)
 
     case attribute
@@ -83,29 +83,40 @@ class Contact
     @@contacts.each do |contact|
     return contact if attribute == :first_name && contact.first_name == value
     return contact if attribute == :last_name && contact.last_name == value
-    return contact if attribute == :email&& contact.email == value
+    return contact if attribute == :email && contact.email == value
     return contact if attribute == :note && contact.note == value
 
     end
-
   end
 
-  # This method should delete all of the contacts
+  # .clear method clears out all items from the array
   def self.delete_all
     @@contacts.clear
 
   end
 
   def full_name
-
+    "#{first_name} #{last_name}"
   end
 
   # This method should delete the contact
-  # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete
+  # this delete method deletes itself from the @@contact array
     @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
+  def display_contact
+    puts
+    puts:"-----------------------------"
+    puts "first name: #{@first_name}"
+    puts "last name: #{@last_name}"
+    puts "email: #{@email}"
+    puts "note: #{@note}"
+    puts "id: #{@id}"
+    puts "------------------------------"
+  end
+
+
+
 
 end
