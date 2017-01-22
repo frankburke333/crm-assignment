@@ -108,13 +108,13 @@ class Contact
   # Feel free to add other methods here, if you need them.
   def display_contact
     puts
-    puts:"-----------------------------"
+    puts:"=============================="
     puts "first name: #{@first_name}"
     puts "last name: #{@last_name}"
     puts "email: #{@email}"
     puts "note: #{@note}"
     puts "id: #{@id}"
-    puts "------------------------------"
+    puts "==============================="
   end
 
 

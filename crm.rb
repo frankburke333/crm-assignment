@@ -54,10 +54,11 @@ class CRM
 
     Contact.create(first_name, last_name, email, note)
 
+
   end
 
   def attribute_list
-    puts 'Please select the attribute to modify'
+    puts 'Please select the attribute'
     puts '[1] First Name'
     puts '[2] Last Name'
     puts '[3] Email'
@@ -74,7 +75,8 @@ class CRM
     modify_contact = Contact.find(id)
 
     attribute_list
-    user_selected =gets.to_i
+
+    while user_selected =gets.to_i
 
     case user_selected
     when 1 then puts "Enter New First Name"
@@ -82,26 +84,39 @@ class CRM
       puts
       modify_contact.display_contact
       puts
+      break
 
     when 2 then puts "Enter New Last Name"
       new = modify_contact.update(:last_name, value = gets.chomp)
       puts
       modify_contact.display_contact
       puts
+      break
 
-    when 3 then puts "Enter New Email Address"
+    when 3 then puts "Enter New Emçail Address"
       new = modify_contact.update(:email, value = gets.chomp)
       puts
       modify_contact.display_contact
       puts
+      break
 
     when 4 then puts "Enter New Note"
       new =modify_contact.update(:note, value = gets.chomp)
       puts
       modify_contact.display_contact
       puts
+      break
+
+      else
+        puts "======================================="
+        puts "please enter a number between 1 and 4"
+        puts "======================================="
+        attribute_list
+      end
     end
-  end
+    end
+
+
 
   #also using ID here to avoid mistakes.
   #using find_id method
@@ -118,13 +133,13 @@ class CRM
   def display_all_contacts
     all_contact = Contact.all
     all_contact.each do |list|
-      puts:"-----------------------------"
+      puts:"==============================="
       puts "first name: #{list.first_name}"
       puts "last name: #{list.last_name}"
       puts "email: #{list.email}"
       puts "note: #{list.note}"
       puts "id: #{list.id}"
-      puts:"-----------------------------"
+      puts
 
     end
   end
@@ -135,7 +150,8 @@ class CRM
   def search_by_attribute
     attribute_list
     puts " Choose number for Search attribute"
-    user_selected =gets.to_i
+    while user_selected =gets.to_i
+
 
     case user_selected
     when 1 then puts "Enter First Name"
@@ -143,28 +159,40 @@ class CRM
       puts
       search_result.display_contact
       puts
+      break
 
     when 2 then puts "Enter Last Name"
       search_result = Contact.find_by(:last_name, value = gets.chomp.to_s)
       puts
       search_result.display_contact
       puts
+      break
 
     when 3 then puts "Enter Email Address"
       search_result = Contact.find_by(:email, value = gets.chomp)
       puts
       search_result.display_contact
       puts
+      break
 
     when 4 then puts "Enter Note"
       search_result = Contact.find_by(:note, value = gets.chomp)
       puts
       search_result.display_contact
       puts
+      break
+
+      else
+        puts "---------------------------------------"
+        puts "please enter a number between 1 and 4"
+        puts "======================================="
+        attribute_list
+
+      end
+      end
     end
   end
 
 
-end
 
   new_crm = CRM.new
