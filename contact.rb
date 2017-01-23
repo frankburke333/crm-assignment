@@ -49,6 +49,7 @@ class Contact
     @@contacts.each do |contact|
       return contact if contact.id == id
     end
+    return false
   end
 
   # This method should allow you to specify
@@ -61,14 +62,14 @@ class Contact
 
   def update(attribute, new_value)
 
-    case attribute
-    when "first_name"
+    case attribute.to_sym
+    when :first_name
       self.first_name = new_value
-    when "last_name"
+    when :last_name
       self.last_name = new_value
-    when "email"
+    when :email
       self.email = new_value
-    when "note"
+    when :note
       self.note = new_value
 
     end
@@ -85,8 +86,12 @@ class Contact
     return contact if attribute.to_sym == :last_name && contact.last_name == value
     return contact if attribute.to_sym == :email && contact.email == value
     return contact if attribute.to_sym == :note && contact.note == value
+
+
+
     #what is potential escape if nothing is found.
     end
+    return false
   end
 
   # This method should delete all of the contacts

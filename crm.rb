@@ -73,6 +73,10 @@ class CRM
     puts "Choose the ID you would like to modify"
     id = gets.chomp.to_i
     modify_contact = Contact.find(id)
+    unless modify_contact
+      puts "ID not found"
+      return
+    end
 
     attribute_list
 
@@ -152,10 +156,15 @@ class CRM
     puts " Choose number for Search attribute"
     while user_selected =gets.to_i
 
-
     case user_selected
     when 1 then puts "Enter First Name"
       search_result = Contact.find_by(:first_name, value = gets.chomp.to_s)
+      unless search_result
+        puts"========================"
+        puts "first name not found"
+        puts"======================="
+        return
+      end
       puts
       search_result.display_contact
       puts
@@ -165,11 +174,23 @@ class CRM
       search_result = Contact.find_by(:last_name, value = gets.chomp.to_s)
       puts
       search_result.display_contact
+      unless search_result
+        puts"========================"
+        puts "last name not found"
+        puts"======================="
+        return
+      end
       puts
       break
 
     when 3 then puts "Enter Email Address"
       search_result = Contact.find_by(:email, value = gets.chomp)
+      unless search_result
+      puts"========================"
+      puts "email not found"
+      puts"======================="
+        return
+      end
       puts
       search_result.display_contact
       puts
@@ -177,6 +198,12 @@ class CRM
 
     when 4 then puts "Enter Note"
       search_result = Contact.find_by(:note, value = gets.chomp)
+      unless search_result
+        puts"========================"
+        puts "note not found"
+        puts"======================="
+        return
+      end
       puts
       search_result.display_contact
       puts
