@@ -62,13 +62,13 @@ class Contact
   def update(attribute, new_value)
 
     case attribute
-    when :first_name
+    when "first_name"
       self.first_name = new_value
-    when :last_name
+    when "last_name"
       self.last_name = new_value
-    when :email
+    when "email"
       self.email = new_value
-    when :note
+    when "note"
       self.note = new_value
 
     end
@@ -81,11 +81,11 @@ class Contact
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by (attribute, value)
     @@contacts.each do |contact|
-    return contact if attribute == :first_name && contact.first_name == value
-    return contact if attribute == :last_name && contact.last_name == value
-    return contact if attribute == :email && contact.email == value
-    return contact if attribute == :note && contact.note == value
-
+    return contact if attribute.to_sym == :first_name && contact.first_name == value
+    return contact if attribute.to_sym == :last_name && contact.last_name == value
+    return contact if attribute.to_sym == :email && contact.email == value
+    return contact if attribute.to_sym == :note && contact.note == value
+    #what is potential escape if nothing is found.
     end
   end
 

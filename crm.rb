@@ -93,7 +93,7 @@ class CRM
       puts
       break
 
-    when 3 then puts "Enter New Emçail Address"
+    when 3 then puts "Enter New Email Address"
       new = modify_contact.update(:email, value = gets.chomp)
       puts
       modify_contact.display_contact
